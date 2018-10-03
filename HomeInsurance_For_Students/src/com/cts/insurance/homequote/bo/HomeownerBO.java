@@ -26,6 +26,10 @@ public class HomeownerBO {
 
 		final HomeownerDAO HomeownerDAO = new HomeownerDAO();
        //Fill code here
+		try {
+			return HomeownerDAO.getHomeowner(quoteId);
+		} catch (HomequoteSystemException e) {
+		} 
 		return null; //return Object
 	}
 	/**
@@ -36,5 +40,9 @@ public class HomeownerBO {
 
 		final HomeownerDAO HomeownerDAO = new HomeownerDAO();
         //Fill code here
+		try {
+			HomeownerDAO.saveHomeowner(homeowner);
+		} catch (HomequoteSystemException e) {
+		} 
 	}
 }
