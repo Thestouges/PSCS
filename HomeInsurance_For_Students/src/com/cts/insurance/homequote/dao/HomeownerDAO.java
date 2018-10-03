@@ -82,7 +82,46 @@ public class HomeownerDAO {
 		ResultSet resultSet = null;
 		PreparedStatement stmt = null;
 		//Fill code here
-		return null; //return Object
+		try {
+			final AbstractDAOFactory daoFactory = AbstractDAOFactory.getDaoFactory(HomeInsuranceConstants.MYSQL);
+			conn = daoFactory.getConnection();
+			stmt = conn.prepareStatement(SqlQueries.GET_HOMEOWNER);
+			stmt.setInt(1, quoteId);
+			resultSet = stmt.executeQuery();
+			if (resultSet.next()) {
+				homeowner = new Homeowner();
+				homeowner.setQuoteId(resultSet.getInt(1));
+				homeowner.setLastName(resultSet.getString(2));
+				homeowner.setDob(resultSet.getString(3));
+				homeowner.setIsRetired(resultSet.getString(4));
+				homeowner.setSsn(resultSet.getString(5));
+				homeowner.setEmailAddress(resultSet.getString(6));
+			}
+			stmt.close();
+		}
+		catch (SQLException e)
+		{
+			throw new HomequoteSystemException(e.getMessage());
+		}
+		catch(Exception e)
+		{
+			throw new HomequoteSystemException(e.getMessage());
+		}
+		finally
+		{
+			try
+			{
+				resultSet.close();
+				stmt.close();
+				conn.close();
+			}
+			catch (SQLException e)
+			{
+				LOG.error("Exception while trying to close Connection : " + e.getMessage() );
+			}
+		}
+		LOG.info("HomeownerDAO.getHomeowner - ends");
+		return homeowner; //return Object
 	}
 
 }
