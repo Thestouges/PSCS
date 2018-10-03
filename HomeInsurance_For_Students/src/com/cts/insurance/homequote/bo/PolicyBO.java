@@ -57,7 +57,10 @@ public class PolicyBO {
 
 		final PolicyDAO poilcyDAO = new PolicyDAO();
 		//Fill code here
-		
+		try {
+			return poilcyDAO.getPolicies(userName);
+		} catch (HomequoteSystemException e) {
+		}
 		return null; //return list of Object
 	}
 	
@@ -70,7 +73,10 @@ public class PolicyBO {
 
 		final PolicyDAO poilcyDAO = new PolicyDAO();
 		//Fill code here
-		
+		try {
+			return poilcyDAO.cancelPolicy(policyKey);
+		} catch (HomequoteSystemException e) {
+		}
 		return null; //return Object
 	}
 	
@@ -83,6 +89,10 @@ public class PolicyBO {
 
 		final PolicyDAO poilcyDAO = new PolicyDAO();
 		//Fill code here
+		try {
+			return poilcyDAO.renewPolicy(policyKey);
+		} catch (HomequoteSystemException e) {
+		}
 		return null; //return Object
 	}
 	/**
