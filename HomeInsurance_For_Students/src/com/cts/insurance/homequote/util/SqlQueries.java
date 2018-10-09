@@ -11,7 +11,7 @@ package com.cts.insurance.homequote.util;
 public final class SqlQueries {
 
 	public static final String SELECT_USER = "SELECT * FROM Login where USER_NAME = ?";
-	public static final String SAVE_USER = "INSERT INTO Login (USER_NAME, USER_PWD) VALUES(?, ?)";
+	public static final String SAVE_USER = "INSERT INTO Login (USER_NAME, USER_PWD, ROLE) VALUES(?, ?, 'USER')";
 
 	public static final String SAVE_LOCATION = "INSERT INTO Locations (QUOTE_ID, RESIDENCE_TYPE, " +
 			"ADDRESS_LINE_1, ADDRESS_LINE_2, CITY, STATE, ZIP, RESIDENCE_USE, USER_NAME) " +

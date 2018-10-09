@@ -102,6 +102,8 @@ public class PolicyBO {
 	private String getDateAfterOneYear(final String policyEffDate) throws ParseException
 	{
 		//Fill code here
-		return null; //return String
+		String date[] = policyEffDate.split(policyEffDate, '-');
+		date[0] = Integer.toString(Integer.parseInt(date[0])+1);
+		return date[0]+'-'+date[1]+'-'+date[2]; //return String
 	}
 }

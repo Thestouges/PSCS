@@ -23,7 +23,10 @@ public class PropertyBO {
 
 		final PropertyDAO PropertyDAO = new PropertyDAO();
 		//Fill code here
-		
+		try {
+			return PropertyDAO.getProperty(quoteId);
+		} catch (HomequoteSystemException e) {
+		}
 		return null; //return Object;
 	}
 	/**
