@@ -95,14 +95,14 @@ public class QuoteDAO {
 			//PERSONAL_PROPERTY, ADDNL_LIVING_EXPENSE, MEDICAL_EXPENSE, DEDUCTIBLE) VALUES
 			//(?, ?, ?, ?, ?, ?, ?, ?);
 			stmt = conn.prepareStatement(SqlQueries.SAVE_QUOTE);
-			stmt.setInt(1, quote.getQuoteId());
-			stmt.setDouble(2, quote.getPremium());
-			stmt.setDouble(3, quote.getDwellingCoverage());
-			stmt.setDouble(4, quote.getDetachedStructure());
-			stmt.setDouble(5, quote.getPersonalProperty());
-			stmt.setDouble(6, quote.getAddnlLivgExpense());
-			stmt.setDouble(7, quote.getMedicalExpense());
-			stmt.setDouble(8, quote.getDeductible());
+//			stmt.setInt(1, quote.getQuoteId());
+			stmt.setDouble(1, quote.getPremium());
+			stmt.setDouble(2, quote.getDwellingCoverage());
+			stmt.setDouble(3, quote.getDetachedStructure());
+			stmt.setDouble(4, quote.getPersonalProperty());
+			stmt.setDouble(5, quote.getAddnlLivgExpense());
+			stmt.setDouble(6, quote.getMedicalExpense());
+			stmt.setDouble(7, quote.getDeductible());
 			stmt.executeUpdate();
 			stmt.close();
 		}
@@ -127,5 +127,45 @@ public class QuoteDAO {
 			}
 		}
 		LOG.info("PropertyDAO.saveQuote - ends");
+	}
+	
+	public int getGeneratedSavedQuoteID() throws HomequoteSystemException{
+		LOG.info("PropertyDAO.saveQuote - starts");
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet resultSet = null;
+		int quoteId = 0;
+		try
+		{
+			final AbstractDAOFactory daoFactory = AbstractDAOFactory.getDaoFactory(HomeInsuranceConstants.MYSQL);
+			conn = daoFactory.getConnection();
+			//select max(quote_id) from quote
+			stmt = conn.prepareStatement(SqlQueries.GET_GENERATED_SAVED_QUOTE_ID);
+			resultSet = stmt.executeQuery();
+			if(resultSet.next()) {
+				quoteId = resultSet.getInt(1);
+			}
+		}catch (SQLException e)
+		{
+			throw new HomequoteSystemException(e.getMessage());
+		}
+		catch(Exception e)
+		{
+			throw new HomequoteSystemException(e.getMessage());
+		} 
+		finally
+		{
+			try
+			{
+				stmt.close();
+				conn.close();
+			}
+			catch (SQLException e)
+			{
+				LOG.error("Exception while trying to close Connection : " + e.getMessage() );
+			}
+		}
+		LOG.info("PropertyDAO.saveQuote - ends");
+		return quoteId;
 	}
 }

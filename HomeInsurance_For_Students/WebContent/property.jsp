@@ -62,17 +62,17 @@ function noBack()
 	<table>
 		<tr>
 			<td>What is the market value of your home?</td>
-			<td><input name="marketValue" type="text" />
+			<td><input name="marketValue" type="text" value="5"/>
 			</td>
 		</tr>
 		<tr>
 			<td>What year was your home originally built?</td>
-			<td><input name="yearBuilt" type="text" />
+			<td><input name="yearBuilt" type="text" value="5"/>
 			</td>
 		</tr>
 		<tr>
 			<td>Square footage</td>
-			<td><input name="squareFootage" type="text" />
+			<td><input name="squareFootage" type="text" value="5"/>
 			</td>
 		</tr>
 		<tr>
@@ -108,18 +108,18 @@ function noBack()
 		</tr>
 		<tr>
 			<td>Number of full baths</td>
-			<td><input name="numFullBaths" type="text" />
+			<td><input name="numFullBaths" type="text" value="5"/>
 			</td>
 		</tr>
 		<tr>
 			<td>Number half baths</td>
-			<td><input name="numHalfBaths" type="text" />
+			<td><input name="numHalfBaths" type="text" value="5"/>
 			</td>
 		</tr>
 		<tr>
 			<td>Does your home have a swimming pool?</td>
 			<td>
-			<input type="radio" name="hasSwimmingPool" value="true" />Yes<BR>
+			<input type="radio" name="hasSwimmingPool" value="true" checked/>Yes<BR>
 			<input type="radio" name="hasSwimmingPool" value="false" />No<BR>
 			</td>
 		</tr>

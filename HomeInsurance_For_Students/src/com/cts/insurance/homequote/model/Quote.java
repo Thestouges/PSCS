@@ -1,4 +1,5 @@
 /**
+ * 
  * This class is the Data Object for Quote
  * 
  * @author Cognizant

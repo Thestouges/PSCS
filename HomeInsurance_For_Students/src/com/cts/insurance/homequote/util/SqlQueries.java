@@ -26,9 +26,10 @@ public final class SqlQueries {
 			"SQUARE_FOOTAGE, DWELLING_STYLE, ROOF_MATERIAL, GARAGE_TYPE, NUM_FULL_BATHS, " +
 			"NUM_HALF_BATHS, HAS_SWIMMING_POOL) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 	
-	public static final String SAVE_QUOTE = "INSERT INTO Quote (QUOTE_ID, PREMIUM, DWELLING_COVERAGE, DETACHED_STRUCTURE, " +
+	public static final String SAVE_QUOTE = "INSERT INTO Quote (PREMIUM, DWELLING_COVERAGE, DETACHED_STRUCTURE, " +
 			"PERSONAL_PROPERTY, ADDNL_LIVING_EXPENSE, MEDICAL_EXPENSE, DEDUCTIBLE) VALUES " +
-			"(?, ?, ?, ?, ?, ?, ?, ?)";
+			"(?, ?, ?, ?, ?, ?, ?)";
+	public static final String GET_GENERATED_SAVED_QUOTE_ID = "select max(quote_id) from quote";
 
 	public static final String GET_LOCATION = "select * from Locations where QUOTE_ID = ?";
 	public static final String GET_HOMEOWNER = "select * from HomeownerInfo where QUOTE_ID = ?";

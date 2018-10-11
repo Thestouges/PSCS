@@ -18,6 +18,8 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 
+import com.cts.insurance.homequote.bo.HomeownerBO;
+import com.cts.insurance.homequote.bo.LocationBO;
 import com.cts.insurance.homequote.bo.PropertyBO;
 import com.cts.insurance.homequote.bo.QuoteBO;
 import com.cts.insurance.homequote.model.Homeowner;
@@ -75,6 +77,12 @@ public class PropertyServlet extends HttpServlet{
 					final Quote quote = quoteBO.calculateQuote(location, homeowner, property);
 					quoteBO.saveQuote(quote);
 					request.setAttribute("quote", quote);
+					
+					//added for quoteID
+					
+					final HomeownerBO homeownerBo = new HomeownerBO();
+					final LocationBO locationBo = new LocationBO();
+					
 				}
 				final RequestDispatcher dispatcher = request.getRequestDispatcher(HomeInsuranceConstants.QUOTE);
 				dispatcher.forward(request, response);
