@@ -42,9 +42,28 @@ public class LocationServlet extends HttpServlet{
 		try {
 			final HttpSession session = request.getSession();
 			//Fill code here
+			final Location location = new Location();
 			
+			location.setQuoteId(request.getParameter(q));
+			location.setResidenceType(request.getParameter(HomeInsuranceConstants.RESIDENCE_TYPE));
+			location.setAddressLine1(request.getParameter(HomeInsuranceConstants.ADDRESS_LINE_1));
+			location.setAddressLine2(request.getParameter(HomeInsuranceConstants.ADDRESS_LINE_2));
+			location.setCity(request.getParameter(HomeInsuranceConstants.CITY));
+			location.setState(request.getParameter(HomeInsuranceConstants.STATE));
+			location.setZip(request.getParameter(HomeInsuranceConstants.ZIP));
+			location.setResidenceUse(request.getParameter(HomeInsuranceConstants.RESIDENCE_USE));
+			location.setUserName(request.getParameter(HomeInsuranceConstants.USER_NAME));
+			
+			session.setAttribute("location", location);
+			
+			final RequestDispatcher dispatcher = request.getRequestDispatcher(HomeInsuranceConstants.HOMEOWNER_INFO);
+			dispatcher.forward(request, response);
 		} catch (Exception e) {
 			//Fill code here
+			logger.error("Exception occurred while executing method LocationServlet.doPost :: " + e);
+			request.setAttribute(HomeInsuranceConstants.MESSAGE, e.getMessage());
+			final RequestDispatcher dispatcher = request.getRequestDispatcher(HomeInsuranceConstants.ERROR);
+			dispatcher.forward(request, response);
 		}
 	}
 }

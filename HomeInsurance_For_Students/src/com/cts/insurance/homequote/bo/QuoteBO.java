@@ -72,7 +72,16 @@ public class QuoteBO {
 		final String location = loc.getResidenceType();
 		//Add 0.5, .06, .07 percentage of premium
 		//Fill code here
-		return 0.0; //return double
+		if(location == "Primary") {
+			premium += premium*.05;
+		}
+		else if(location == "Secondary") {
+			premium += premium*.06;
+		}
+		else if(location == "Rental Property") {
+			premium += premium*.07;
+		}
+		return premium; //return double
 	}
 
 	/**
@@ -83,7 +92,8 @@ public class QuoteBO {
 	private int getHomeValue(final Property property, final int numYearsOld) {
 		int homeValue = property.getSquareFootage() * HomeInsuranceConstants.CONS_COST_PER_SF;
 		//Fill code here
-		return 0;//return integer
+		
+		return homeValue*numYearsOld;//return integer
 	}
 	
 	/**
@@ -95,6 +105,10 @@ public class QuoteBO {
 
 		final QuoteDAO quoteDAO = new QuoteDAO();
 		//Fill code here
+		try {
+			return quoteDAO.getQuote(quoteId);
+		} catch (HomequoteSystemException e) {
+		}
 		return null;//return Object
 	}
 	
@@ -105,5 +119,9 @@ public class QuoteBO {
 
 		final QuoteDAO quoteDAO = new QuoteDAO();
 		//Fill code here
+		try {
+			quoteDAO.saveQuote(quote);
+		} catch (HomequoteSystemException e) {
+		}
 	}
 }

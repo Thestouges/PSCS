@@ -55,13 +55,11 @@ public class LocationBO {
 	public List<Location> getQuoteIds(String userName) throws HomequoteBusinessException{
 
 		final LocationDAO locationDAO = new LocationDAO();
-		//Fill code here
 		try {
 			return locationDAO.getQuoteIds(userName);
-		} catch(Exception e)
-		{
-			throw new HomequoteBusinessException(e.getMessage());
+		} catch (HomequoteSystemException e) {
 		}
+		return null;
 	}
 	
 }
