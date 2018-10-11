@@ -28,8 +28,9 @@ public class LocationBO {
 		try {
 			locationDAO.saveLocation(location);
 		} catch (HomequoteSystemException e) {
+			throw new HomequoteBusinessException(e.getMessage());
 		}
-		return 0; //return integer
+		return location.getQuoteId(); //return integer
 	}
 	
 	/**
@@ -43,9 +44,8 @@ public class LocationBO {
 		try {
 			return locationDAO.getLocation(quoteId);
 		} catch (HomequoteSystemException e) {
+			throw new HomequoteBusinessException(e.getMessage());
 		}
-		
-		return null; //return Object
 	}
 	
 	/**
@@ -58,8 +58,8 @@ public class LocationBO {
 		try {
 			return locationDAO.getQuoteIds(userName);
 		} catch (HomequoteSystemException e) {
+			throw new HomequoteBusinessException(e.getMessage());
 		}
-		return null;
 	}
 	
 }

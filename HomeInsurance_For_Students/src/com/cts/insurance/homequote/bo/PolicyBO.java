@@ -38,10 +38,6 @@ public class PolicyBO {
 			poilcyDAO.savePolicy(policy);
 			return policy;
 		}
-		catch(ParseException e)
-		{
-			throw new HomequoteBusinessException(e.getMessage());
-		}
 		catch(HomequoteSystemException e)
 		{
 			throw new HomequoteBusinessException(e.getMessage());
@@ -60,8 +56,8 @@ public class PolicyBO {
 		try {
 			return poilcyDAO.getPolicies(userName);
 		} catch (HomequoteSystemException e) {
+			throw new HomequoteBusinessException(e.getMessage());
 		}
-		return null; //return list of Object
 	}
 	
 	/**
@@ -76,8 +72,8 @@ public class PolicyBO {
 		try {
 			return poilcyDAO.cancelPolicy(policyKey);
 		} catch (HomequoteSystemException e) {
+			throw new HomequoteBusinessException(e.getMessage());
 		}
-		return null; //return Object
 	}
 	
 	/**
@@ -92,18 +88,25 @@ public class PolicyBO {
 		try {
 			return poilcyDAO.renewPolicy(policyKey);
 		} catch (HomequoteSystemException e) {
+			throw new HomequoteBusinessException(e.getMessage());
 		}
-		return null; //return Object
 	}
 	/**
 	 * @param policyEffectiveDate
 	 * @throws ParseException
 	 */
-	private String getDateAfterOneYear(final String policyEffDate) throws ParseException
+	private String getDateAfterOneYear(final String policyEffDate) throws HomequoteBusinessException
 	{
 		//Fill code here
-		String date[] = policyEffDate.split(policyEffDate, '-');
-		date[0] = Integer.toString(Integer.parseInt(date[0])+1);
-		return date[0]+'-'+date[1]+'-'+date[2]; //return String
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		Calendar calendar = null;
+			try {
+				calendar.setTime(sdf.parse(policyEffDate));
+				calendar.add(calendar.YEAR, 1);
+				return sdf.format(calendar.getTime());
+				
+			} catch (ParseException e) {
+				throw new HomequoteBusinessException(e.getMessage());
+			}
 	}
 }

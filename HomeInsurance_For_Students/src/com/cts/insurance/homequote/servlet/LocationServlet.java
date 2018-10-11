@@ -44,7 +44,6 @@ public class LocationServlet extends HttpServlet{
 			//Fill code here
 			final Location location = new Location();
 			
-			location.setQuoteId(request.getParameter(q));
 			location.setResidenceType(request.getParameter(HomeInsuranceConstants.RESIDENCE_TYPE));
 			location.setAddressLine1(request.getParameter(HomeInsuranceConstants.ADDRESS_LINE_1));
 			location.setAddressLine2(request.getParameter(HomeInsuranceConstants.ADDRESS_LINE_2));

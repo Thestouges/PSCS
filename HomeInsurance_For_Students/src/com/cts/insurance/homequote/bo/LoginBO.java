@@ -24,16 +24,14 @@ public class LoginBO {
 	public User getUser(final String userName) throws HomequoteBusinessException{
 
 		final LoginDAO loginDAO = new LoginDAO();
-		User user = null;
 		//Fill code here
 		try {
-			user = loginDAO.getUser(userName);
+			return loginDAO.getUser(userName);
 		}
 		catch(Exception e)
 		{
 			throw new HomequoteBusinessException(e.getMessage());
 		}
-		return user;
 	}
 	
 	/**
@@ -48,6 +46,7 @@ public class LoginBO {
 		try {
 			loginDAO.saveUser(user);
 		} catch (HomequoteSystemException e) {
+			throw new HomequoteBusinessException(e.getMessage());
 		}
 	}
 }

@@ -26,8 +26,8 @@ public class PropertyBO {
 		try {
 			return PropertyDAO.getProperty(quoteId);
 		} catch (HomequoteSystemException e) {
+			throw new HomequoteBusinessException(e.getMessage());
 		}
-		return null; //return Object;
 	}
 	/**
 	 * @param property

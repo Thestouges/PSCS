@@ -29,8 +29,8 @@ public class HomeownerBO {
 		try {
 			return HomeownerDAO.getHomeowner(quoteId);
 		} catch (HomequoteSystemException e) {
-		} 
-		return null; //return Object
+			throw new HomequoteBusinessException(e.getMessage());
+		}
 	}
 	/**
 	 * @param homeowner
@@ -43,6 +43,7 @@ public class HomeownerBO {
 		try {
 			HomeownerDAO.saveHomeowner(homeowner);
 		} catch (HomequoteSystemException e) {
+			throw new HomequoteBusinessException(e.getMessage());
 		} 
 	}
 }
