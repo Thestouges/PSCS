@@ -37,7 +37,7 @@ public class LocationDAO {
 		{
 			final AbstractDAOFactory daoFactory = AbstractDAOFactory.getDaoFactory(HomeInsuranceConstants.MYSQL);
 			conn = daoFactory.getConnection();
-			//"INSERT INTO Location (QUOTE_ID, RESIDENCE_TYPE, ADDRESS_LINE_1, ADDRESS_LINE_2, CITY, STATE, ZIP, RESIDENCE_USE,USER_NAME) VALUES
+			//"INSERT INTO Locations (QUOTE_ID, RESIDENCE_TYPE, ADDRESS_LINE_1, ADDRESS_LINE_2, CITY, STATE, ZIP, RESIDENCE_USE,USER_NAME) VALUES
 			//(NULL, ?, ?, ?, ?, ?, ?, ?, ?)";
 			stmt = conn.prepareStatement(SqlQueries.SAVE_LOCATION);
 			stmt.setString(1, location.getResidenceType());
@@ -50,7 +50,7 @@ public class LocationDAO {
 			stmt.setString(8, location.getUserName());
 			stmt.executeUpdate();
 			
-			//"SELECT QUOTE_ID from Location where RESIDENCE_TYPE = ? and " +
+			//"SELECT QUOTE_ID from Locations where RESIDENCE_TYPE = ? and " +
 			//"ADDRESS_LINE_1 = ? and ADDRESS_LINE_2 = ? and CITY = ? and STATE = ? and ZIP = ? and RESIDENCE_USE = ? and USER_NAME = ?)";
 			stmt = conn.prepareStatement(SqlQueries.GET_QUOTE_ID);
 			stmt.setString(1, location.getResidenceType());
