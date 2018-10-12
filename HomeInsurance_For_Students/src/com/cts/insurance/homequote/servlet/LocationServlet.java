@@ -53,7 +53,6 @@ public class LocationServlet extends HttpServlet{
 			location.setZip(request.getParameter(HomeInsuranceConstants.ZIP));
 			location.setResidenceUse(request.getParameter(HomeInsuranceConstants.RESIDENCE_USE));
 			location.setUserName((String)session.getAttribute(HomeInsuranceConstants.USER_NAME));
-//			location.setQuoteId(locationBo.saveHomeLocation(location));
 			session.setAttribute("location", location);
 			
 			final RequestDispatcher dispatcher = request.getRequestDispatcher(HomeInsuranceConstants.HOMEOWNER_INFO);

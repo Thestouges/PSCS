@@ -61,27 +61,27 @@ function noBack()
 		</tr>
 		<tr>
 			<td>Address Line 1</td>
-			<td><input name="addressLine1" type="text" value="5"/>
+			<td><input name="addressLine1" type="text" />
 			</td>
 		</tr>
 		<tr>
 			<td>Address Line 2</td>
-			<td><input name="addressLine2" type="text" value="5"/>
+			<td><input name="addressLine2" type="text" />
 			</td>
 		</tr>
 		<tr>
 			<td>City</td>
-			<td><input name="city" type="text" value="5"/>
+			<td><input name="city" type="text" />
 			</td>
 		</tr>
 		<tr>
 			<td>State</td>
-			<td><input name="state" type="text" value="5"/>
+			<td><input name="state" type="text" />
 			</td>
 		</tr>
 		<tr>
 			<td>Zip</td>
-			<td><input name="zip" type="text" value="5"/>
+			<td><input name="zip" type="text" />
 			</td>
 		</tr>
 		<tr>
@@ -89,7 +89,7 @@ function noBack()
 			<td><select name="residenceUse">
 					<option value="Primary">Primary</option>
 					<option value="Secondary">Secondary</option>
-					<option value="RentalProperty">Rental Property</option>
+					<option value="Rental Property">Rental Property</option>
 			</select></td>
 		</tr>
 		<tr>

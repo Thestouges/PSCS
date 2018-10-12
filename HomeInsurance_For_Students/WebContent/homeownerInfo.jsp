@@ -61,34 +61,34 @@ function noBack()
 	<table>
 		<tr>
 			<td>First Name</td>
-			<td><input name="firstName" type="text" value="5"/>
+			<td><input name="firstName" type="text" />
 			</td><td></td>
 		</tr>
 		<tr>
 			<td>Last Name</td>
-			<td><input name="lastName" type="text" value="5"/>
+			<td><input name="lastName" type="text" />
 			</td><td></td>
 		</tr>
 		<tr>
 			<td>Date of Birth</td>
-			<td><input type="text" name="dob" value="1990-01-01"/></td><td>(yyyy-mm-dd)
+			<td><input type="text" name="dob" /></td><td>(yyyy-mm-dd)
 			</td>
 		</tr>
 		<tr>
 			<td width="55%">Are you retired?</td>
 			<td>
-			<input type="radio" name="isRetired" value="Yes" checked/>Yes
+			<input type="radio" name="isRetired" value="Yes" />Yes
 			<input type="radio" name="isRetired" value="No" />No
 			</td><td></td>
 		</tr>
 		<tr>
 			<td>Social Security Number</td>
-			<td><input name="ssn" type="text" value="5"/>
+			<td><input name="ssn" type="text" />
 			</td><td></td>
 		</tr>
 		<tr>
 			<td>Email Address</td>
-			<td><input name="emailAddress" type="text" value="5"/>
+			<td><input name="emailAddress" type="text" />
 			</td><td></td>
 		</tr>
 		<tr>
