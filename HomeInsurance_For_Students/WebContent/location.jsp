@@ -15,6 +15,11 @@ function validate(form)
 		alert("Please enter Address Line 1");
 		return false;
 	}
+	if(locationForm["addressLine2"].value == "")
+	{
+		alert("Please enter Address Line 2");
+		return false;
+	}
 	if(locationForm["city"].value == "")
 	{
 		alert("Please enter City");
