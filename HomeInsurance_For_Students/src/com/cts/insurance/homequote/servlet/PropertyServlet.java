@@ -77,19 +77,21 @@ public class PropertyServlet extends HttpServlet{
 					quoteBO.saveQuote(quote);
 					request.setAttribute("quote", quote);
 					
-					//added for quoteID
 					final HomeownerBO homeownerBo = new HomeownerBO();
 					final LocationBO locationBo = new LocationBO();
+					
+					//Added to get quoted ID generated from database
 					int quoteId = quoteBO.getGeneratedSavedQuoteID(quote);
 					
+					//sets all previous class objects of location, homeowner, property to the generated quote id and stores it
 					location.setQuoteId(quoteId);
 					homeowner.setQuoteId(quoteId);
 					property.setQuoteId(quoteId);
-					
 					session.setAttribute("location", location);
 					session.setAttribute("homeowner", homeowner);
 					session.setAttribute("property", property);
 					
+					//saves the 3 previous items into database with quote id
 					locationBo.saveHomeLocation(location);
 					homeownerBo.saveHomeownerInfo(homeowner);
 					propertyBo.saveProperty(property);

@@ -42,12 +42,21 @@ public class LocationServlet extends HttpServlet{
 		try {
 			final HttpSession session = request.getSession();
 			//Fill code here
+			
 			final Location location = new Location();
-			LocationBO locationBo = new LocationBO();
-					
 			location.setResidenceType(request.getParameter(HomeInsuranceConstants.RESIDENCE_TYPE));
 			location.setAddressLine1(request.getParameter(HomeInsuranceConstants.ADDRESS_LINE_1));
-			location.setAddressLine2(request.getParameter(HomeInsuranceConstants.ADDRESS_LINE_2));
+			
+			//sets Address_Line_2 to "" instead of null if parameter is null
+			if(request.getParameter(HomeInsuranceConstants.ADDRESS_LINE_2) == ""
+					||request.getParameter(HomeInsuranceConstants.ADDRESS_LINE_2) == null) {
+				location.setAddressLine2("");
+			}
+			else {
+				location.setAddressLine2(request.getParameter(HomeInsuranceConstants.ADDRESS_LINE_2));
+			}
+			
+			//sets location class with form parameters and stores inside session
 			location.setCity(request.getParameter(HomeInsuranceConstants.CITY));
 			location.setState(request.getParameter(HomeInsuranceConstants.STATE));
 			location.setZip(request.getParameter(HomeInsuranceConstants.ZIP));
