@@ -10,6 +10,7 @@ package com.cts.insurance.homequote.bo;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import com.cts.insurance.homequote.dao.PolicyDAO;
@@ -99,9 +100,10 @@ public class PolicyBO {
 	{
 		//Fill code here
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-		Calendar calendar = null;
+		Calendar calendar = Calendar.getInstance();
 			try {
-				calendar.setTime(sdf.parse(policyEffDate));
+				Date date = sdf.parse(policyEffDate);
+				calendar.setTime(date);
 				calendar.add(calendar.YEAR, 1);
 				return sdf.format(calendar.getTime());
 				

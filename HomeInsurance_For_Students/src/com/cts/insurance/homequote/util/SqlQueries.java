@@ -15,7 +15,7 @@ public final class SqlQueries {
 
 	public static final String SAVE_LOCATION = "INSERT INTO Locations (QUOTE_ID, RESIDENCE_TYPE, " +
 			"ADDRESS_LINE_1, ADDRESS_LINE_2, CITY, STATE, ZIP, RESIDENCE_USE, USER_NAME) " +
-			"VALUES (NULL, ?, ?, ?, ?, ?, ?, ?, ?)";
+			"VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 	public static final String GET_QUOTE_ID = "SELECT QUOTE_ID from Locations where RESIDENCE_TYPE = ? and " +
 			"ADDRESS_LINE_1 = ? and ADDRESS_LINE_2 = ? and CITY = ? and STATE = ? and ZIP = ? and RESIDENCE_USE = ? and USER_NAME = ?";
 	
@@ -29,7 +29,8 @@ public final class SqlQueries {
 	public static final String SAVE_QUOTE = "INSERT INTO Quote (PREMIUM, DWELLING_COVERAGE, DETACHED_STRUCTURE, " +
 			"PERSONAL_PROPERTY, ADDNL_LIVING_EXPENSE, MEDICAL_EXPENSE, DEDUCTIBLE) VALUES " +
 			"(?, ?, ?, ?, ?, ?, ?)";
-	public static final String GET_GENERATED_SAVED_QUOTE_ID = "select max(quote_id) from quote";
+	public static final String GET_GENERATED_SAVED_QUOTE_ID = "select max(quote_id) from quote " + 
+			"where premium = ? and dwelling_coverage = ? and detached_structure = ? and personal_property = ? and addnl_living_expense = ? and medical_expense = ? and deductible = ?";
 
 	public static final String GET_LOCATION = "select * from Locations where QUOTE_ID = ?";
 	public static final String GET_HOMEOWNER = "select * from HomeownerInfo where QUOTE_ID = ?";

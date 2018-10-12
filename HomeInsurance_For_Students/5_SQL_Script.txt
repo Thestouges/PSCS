@@ -9,7 +9,7 @@ create table Login(
 USER_NAME varchar2(20) NOT NULL Unique,
 USER_PWD varchar2(20) NOT NULL,
 ROLE varchar2(255) NOT NULL
-)
+);
 
 create table Locations(
 QUOTE_ID NUMBER(10),

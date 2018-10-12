@@ -67,7 +67,6 @@ public class PropertyServlet extends HttpServlet{
 						property.setQuoteId(location.getQuoteId());
 					}
 					final PropertyBO propertyBo = new PropertyBO();
-					propertyBo.saveProperty(property);
 					session.setAttribute("property", property);
 					
 					final Homeowner homeowner = (Homeowner)session.getAttribute("homeowner");
@@ -79,10 +78,21 @@ public class PropertyServlet extends HttpServlet{
 					request.setAttribute("quote", quote);
 					
 					//added for quoteID
-					
 					final HomeownerBO homeownerBo = new HomeownerBO();
 					final LocationBO locationBo = new LocationBO();
+					int quoteId = quoteBO.getGeneratedSavedQuoteID(quote);
 					
+					location.setQuoteId(quoteId);
+					homeowner.setQuoteId(quoteId);
+					property.setQuoteId(quoteId);
+					
+					session.setAttribute("location", location);
+					session.setAttribute("homeowner", homeowner);
+					session.setAttribute("property", property);
+					
+					locationBo.saveHomeLocation(location);
+					homeownerBo.saveHomeownerInfo(homeowner);
+					propertyBo.saveProperty(property);
 				}
 				final RequestDispatcher dispatcher = request.getRequestDispatcher(HomeInsuranceConstants.QUOTE);
 				dispatcher.forward(request, response);

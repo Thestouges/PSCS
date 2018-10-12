@@ -40,14 +40,15 @@ public class LocationDAO {
 			//"INSERT INTO Locations (QUOTE_ID, RESIDENCE_TYPE, ADDRESS_LINE_1, ADDRESS_LINE_2, CITY, STATE, ZIP, RESIDENCE_USE,USER_NAME) VALUES
 			//(NULL, ?, ?, ?, ?, ?, ?, ?, ?)";
 			stmt = conn.prepareStatement(SqlQueries.SAVE_LOCATION);
-			stmt.setString(1, location.getResidenceType());
-			stmt.setString(2, location.getAddressLine1());
-			stmt.setString(3, location.getAddressLine2());
-			stmt.setString(4, location.getCity());
-			stmt.setString(5, location.getState());
-			stmt.setString(6, location.getZip());
-			stmt.setString(7, location.getResidenceUse());
-			stmt.setString(8, location.getUserName());
+			stmt.setInt(1, location.getQuoteId());
+			stmt.setString(2, location.getResidenceType());
+			stmt.setString(3, location.getAddressLine1());
+			stmt.setString(4, location.getAddressLine2());
+			stmt.setString(5, location.getCity());
+			stmt.setString(6, location.getState());
+			stmt.setString(7, location.getZip());
+			stmt.setString(8, location.getResidenceUse());
+			stmt.setString(9, location.getUserName());
 			stmt.executeUpdate();
 			
 			//"SELECT QUOTE_ID from Locations where RESIDENCE_TYPE = ? and " +

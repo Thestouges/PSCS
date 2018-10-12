@@ -91,11 +91,10 @@ public class QuoteDAO {
 		{
 			final AbstractDAOFactory daoFactory = AbstractDAOFactory.getDaoFactory(HomeInsuranceConstants.MYSQL);
 			conn = daoFactory.getConnection();
-			//INSERT INTO Quote (QUOTE_ID, PREMIUM, DWELLING_COVERAGE, DETACHED_STRUCTURE,
+			//INSERT INTO Quote (PREMIUM, DWELLING_COVERAGE, DETACHED_STRUCTURE,
 			//PERSONAL_PROPERTY, ADDNL_LIVING_EXPENSE, MEDICAL_EXPENSE, DEDUCTIBLE) VALUES
 			//(?, ?, ?, ?, ?, ?, ?, ?);
 			stmt = conn.prepareStatement(SqlQueries.SAVE_QUOTE);
-//			stmt.setInt(1, quote.getQuoteId());
 			stmt.setDouble(1, quote.getPremium());
 			stmt.setDouble(2, quote.getDwellingCoverage());
 			stmt.setDouble(3, quote.getDetachedStructure());
@@ -129,7 +128,7 @@ public class QuoteDAO {
 		LOG.info("PropertyDAO.saveQuote - ends");
 	}
 	
-	public int getGeneratedSavedQuoteID() throws HomequoteSystemException{
+	public int getGeneratedSavedQuoteID(final Quote quote) throws HomequoteSystemException{
 		LOG.info("PropertyDAO.saveQuote - starts");
 		Connection conn = null;
 		PreparedStatement stmt = null;
@@ -139,8 +138,18 @@ public class QuoteDAO {
 		{
 			final AbstractDAOFactory daoFactory = AbstractDAOFactory.getDaoFactory(HomeInsuranceConstants.MYSQL);
 			conn = daoFactory.getConnection();
-			//select max(quote_id) from quote
+			//select quote_id from quote
+			//where premium = ? and dwelling_coverage = ? and detached_structure = ? and personal_property = ? 
+			//and addnl_living_expense = ? and medical_expense = ? and deductible = ?
+
 			stmt = conn.prepareStatement(SqlQueries.GET_GENERATED_SAVED_QUOTE_ID);
+			stmt.setDouble(1, quote.getPremium());
+			stmt.setDouble(2, quote.getDwellingCoverage());
+			stmt.setDouble(3, quote.getDetachedStructure());
+			stmt.setDouble(4, quote.getPersonalProperty());
+			stmt.setDouble(5, quote.getAddnlLivgExpense());
+			stmt.setDouble(6, quote.getMedicalExpense());
+			stmt.setDouble(7, quote.getDeductible());
 			resultSet = stmt.executeQuery();
 			if(resultSet.next()) {
 				quoteId = resultSet.getInt(1);

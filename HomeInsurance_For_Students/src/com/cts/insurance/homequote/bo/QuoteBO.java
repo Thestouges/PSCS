@@ -141,4 +141,18 @@ public class QuoteBO {
 			throw new HomequoteBusinessException(e.getMessage());
 		}
 	}
+	
+	/**
+	 * @param quote
+	 * @return
+	 * @throws HomequoteBusinessException
+	 */
+	public int getGeneratedSavedQuoteID(final Quote quote) throws HomequoteBusinessException{
+		final QuoteDAO quoteDAO = new QuoteDAO();
+		try {
+			return quoteDAO.getGeneratedSavedQuoteID(quote);
+		} catch (HomequoteSystemException e) {
+			throw new HomequoteBusinessException(e.getMessage());
+		}
+	}
 }
