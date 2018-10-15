@@ -14,9 +14,29 @@ function validateForm(homeowner) {
 		homeowner.firstName.focus();
 		return false;
 	}
+	if(!/^.{0,30}$/.test(homeowner.firstName.value)){
+		alert("First name cannot exceed 30 characters")
+		homeowner.firstName.focus();
+		return false;
+	}
+	if(!/^.[a-zA-Z0-9 ]{0,30}$/.test(homeowner.firstName.value)){
+		alert("First name can only contain alphanumeric characters");
+		homeowner.firstName.focus();
+		return false;
+	}
 	if(homeowner.lastName.value=="")
 	{
 		alert("Please enter the Last name");
+		homeowner.lastName.focus();
+		return false;
+	}
+	if(!/^.{0,30}$/.test(homeowner.lastName.value)){
+		alert("Last name cannot exceed 30 characters")
+		homeowner.lastName.focus();
+		return false;
+	}
+	if(!/^.[a-zA-Z0-9 ]{0,30}$/.test(homeowner.lastName.value)){
+		alert("Last name can only contain alphanumeric characters");
 		homeowner.lastName.focus();
 		return false;
 	}
@@ -28,6 +48,7 @@ function validateForm(homeowner) {
 	}
 	if(!(/^\d{4}-\d{1,2}-\d{1,2}$/.test(homeowner.dob.value))){
 		alert("Please Enter Date of Birth with format yyyy-mm-dd");
+		homeowner.dob.focus();
 		return false;
 	}
 	if(homeowner.isRetired[0].checked==false && homeowner.isRetired[1].checked==false )
@@ -41,8 +62,14 @@ function validateForm(homeowner) {
 		homeowner.ssn.focus();
 		return false;
 	}
-	if(!/^\d+$/.test(homeowner.ssn.value)){
-		alert("Enter a valid Social Security Number");
+	if(!/^.{0,9}$/.test(homeowner.ssn.value)){
+		alert("Address Line 1 cannot exceed 9 characters")
+		homeowner.ssn.focus();
+		return false;
+	}
+	if(!/^.[0-9]{0,9}$/.test(homeowner.ssn.value)){
+		alert("SSN can only contain numeric characters");
+		homeowner.ssn.focus();
 		return false;
 	}
 	if(homeowner.emailAddress.value=="")

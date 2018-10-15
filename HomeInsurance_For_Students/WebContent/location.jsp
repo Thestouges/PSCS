@@ -15,14 +15,38 @@ function validate(form)
 		alert("Please enter Address Line 1");
 		return false;
 	}
+	if(!/^.{0,50}$/.test(locationForm["addressLine1"].value)){
+		alert("Address Line 1 cannot exceed 50 characters")
+		return false;
+	}
+	if(!/^.[a-zA-Z0-9 ,-/.]{0,50}$/.test(locationForm["addressLine1"].value)){
+		alert("Address Line 1 can only contain alphanumeric characters and ,-/. characters");
+		return false;
+	}
 	if(locationForm["addressLine2"].value == "")
 	{
 		alert("Please enter Address Line 2");
 		return false;
 	}
+	if(!/^.{0,100}$/.test(locationForm["addressLine2"].value)){
+		alert("Address Line 2 cannot exceed 100 characters")
+		return false;
+	}
+	if(!/^.[a-zA-Z0-9 ,-/.]{0,100}$/.test(locationForm["addressLine2"].value)){
+		alert("Address Line 2 can only contain alphanumeric characters and ,-/. characters");
+		return false;
+	}
 	if(locationForm["city"].value == "")
 	{
 		alert("Please enter City");
+		return false;
+	}
+	if(!/^.{0,15}$/.test(locationForm["city"].value)){
+		alert("City cannot exceed 15 characters")
+		return false;
+	}
+	if(!/^.[a-zA-Z0-9 ]{0,15}$/.test(locationForm["city"].value)){
+		alert("City can only contain alphanumeric characters");
 		return false;
 	}
 	if(locationForm["state"].value == "")
@@ -35,8 +59,12 @@ function validate(form)
 		alert("Please enter Zip");
 		return false;
 	}
-	if(!/^[0-9]{5}(?:-[0-9]{4})?$/.test(locationForm["zip"].value)){
-		alert("Please enter 5 digit Zip Code");
+	if(!/^.{0,10}$/.test(locationForm["zip"].value)){
+		alert("Zip cannot exceed 10 characters")
+		return false;
+	}
+	if(!/^.[0-9]{0,10}$/.test(locationForm["zip"].value)){
+		alert("Zip can only contain numeric characters");
 		return false;
 	}
 	return true;

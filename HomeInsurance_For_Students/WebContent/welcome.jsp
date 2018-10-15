@@ -15,12 +15,30 @@ function validate(user) {
 		user.userName.focus();
 		return false;
 	}
-
+	if(!/^.{0,20}$/.test(user.userName.value)){
+		alert("Username cannot exceed 20 characters")
+		user.userName.focus();
+		return false;
+	}
+	if(!/^.[a-zA-Z0-9]{0,20}$/.test(user.userName.value)){
+		alert("Username can only contain alphanumeric characters");
+		user.userName.focus();
+		return false;
+	}
 	if(user.password.value=="")
 	{
 		alert("Please enter your Password");
 		user.password.focus();
-
+		return false;
+	}
+	if(!/^.{0,20}$/.test(user.password.value)){
+		alert("Username cannot exceed 20 characters")
+		user.userName.focus();
+		return false;
+	}
+	if(!/^.[a-zA-Z0-9]{0,20}$/.test(user.password.value)){
+		alert("Username can only contain alphanumeric characters");
+		user.userName.focus();
 		return false;
 	}
 }

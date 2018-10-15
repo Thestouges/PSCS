@@ -15,12 +15,31 @@ function validate(user) {
 		user.userName.focus();
 		return false;
 	}
-
+	if(!/^.{0,20}$/.test(user.userName.value)){
+		alert("Username cannot exceed 20 characters")
+		user.userName.focus();
+		return false;
+	}
+	if(!/^.[a-zA-Z0-9]{0,20}$/.test(user.userName.value)){
+		alert("Username can only contain alphanumeric characters");
+		user.userName.focus();
+		return false;
+	}
 	if(user.password.value=="")
 	{
 		alert("Please enter your Password");
 		user.password.focus();
 
+		return false;
+	}
+	if(!/^.{0,20}$/.test(user.password.value)){
+		alert("Password cannot exceed 20 characters")
+		user.userName.focus();
+		return false;
+	}
+	if(!/^.[a-zA-Z0-9]{0,20}$/.test(user.password.value)){
+		alert("Password can only contain alphanumeric characters");
+		user.userName.focus();
 		return false;
 	}
 	if (user.confirmPass.value=="")
@@ -44,7 +63,7 @@ function validate(user) {
 <hr/>
 <br />
 <div align="center" style="width:800px; margin:0 auto;">
-<form name="registration" action="login?action=newUser" method="post">
+<form name="user" action="login?action=newUser" method="post">
 <jsp:useBean id='user' scope='session' class='com.cts.insurance.homequote.model.User' type="com.cts.insurance.homequote.model.User" />
 	<table>
 		<tr>
@@ -53,20 +72,20 @@ function validate(user) {
 		<tr></tr>
 		<tr>
 			<td>Username :</td>
-			<td width="70%"><input value='<jsp:getProperty name="user" property="userName"/>' name="userName" value=""/></td>
+			<td width="70%"><input type="text" name="userName" value=""/></td>
 		</tr>
 		<tr>
 			<td>Password :</td>
-			<td width="70%"><input type="password" name="password" value='<jsp:getProperty name="user" property="password"/>' name="password" value=""/></td>
+			<td width="70%"><input type="password" name="password" /></td>
 		</tr>
 		<tr>
 			<td>Re-enter password</td>
-			<td width="70%"><input type="password" name="confirmPass" value='<jsp:getProperty name="user" property="password"/>' name="password" value=""/></td>
+			<td width="70%"><input type="password" name="confirmPass" /></td>
 		</tr>
 		<tr></tr>
 		<tr>
-			<td colspan=2 align="center"><input type="submit" value="Login"
-				onclick="return validate(user);" />
+			<td colspan=2 align="center">
+			<input type="submit" value="Login" onclick="return validate(user);" />
 			</td>
 		</tr>
 	</table>

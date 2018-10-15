@@ -17,6 +17,17 @@ function enableEsign()
 {
 	document.esign.esignature.disabled=false;
 }
+function validateForm(form){
+	var buyForm = document.forms["esign"];
+	if(buyForm["policyEffDate"].value == ""){
+		alert("Policy Eff date cannot be empty");
+		return false;
+	}
+	if(!(/^\d{4}-\d{1,2}-\d{1,2}$/.test(buyForm["policyEffDate"].value)){
+		alert("Please Policy Eff Date with format yyyy-mm-dd");
+		return false;
+	}
+}
 
 </script>
 </head>
@@ -38,7 +49,7 @@ function enableEsign()
 	<h6>Policy start date cannot be more than 60 days from today's date</h6>
 	<br/>
 	<input type="checkbox" name="esignature" value="Esign" disabled="disabled"/>This is to acknowledge that I have read the terms and conditions of the policy.
-	<br/><input type="submit" name="submit" value="Submit"/>
+	<br/><input type="submit" name="submit" value="Submit" onclick="return validateForm(this);"/>
 	</form>
 	</div>
 	<hr/>
