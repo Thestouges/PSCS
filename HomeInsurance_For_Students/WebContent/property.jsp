@@ -14,15 +14,30 @@ function validateForm(property) {
 		property.marketValue.focus();
 		return false;
 	}
+	if(!/^\d+$/.test(property.marketValue.value)){
+		alert("Please enter only numeric values for market value");
+		property.marketValue.focus();
+		return false;
+	}
 	if(property.yearBuilt.value=="")
 	{
 		alert("Please enter the year built of your home");
 		property.yearBuilt.focus();
+		property.yearBuilt.focus();
+		return false;
+	}
+	if(!/^\d{4}$/.test(property.yearBuilt.value)){
+		alert("Please enter a valid year");
 		return false;
 	}
 	if(property.squareFootage.value=="")
 	{
 		alert("Please enter the Square Footage");
+		property.squareFootage.focus();
+		return false;
+	}
+	if(!/^\d+$/.test(property.squareFootage.value)){
+		alert("Please enter only numeric values for square footage");
 		property.squareFootage.focus();
 		return false;
 	}
@@ -32,9 +47,19 @@ function validateForm(property) {
 		property.numFullBaths.focus();
 		return false;
 	}
+	if(!/^\d+$/.test(property.numFullBaths.value)){
+		alert("Please enter only numeric values for Full Baths");
+		property.numFullBaths.focus();
+		return false;
+	}
 	if(property.numHalfBaths.value=="")
 	{
 		alert("Please enter the Number of Half Baths");
+		property.numHalfBaths.focus();
+		return false;
+	}
+	if(!/^\d+$/.test(property.numHalfBaths.value)){
+		alert("Please enter only numeric values for Half Baths");
 		property.numHalfBaths.focus();
 		return false;
 	}

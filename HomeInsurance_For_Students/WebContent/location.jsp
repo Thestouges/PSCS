@@ -35,6 +35,10 @@ function validate(form)
 		alert("Please enter Zip");
 		return false;
 	}
+	if(!/^[0-9]{5}(?:-[0-9]{4})?$/.test(locationForm["zip"].value)){
+		alert("Please enter 5 digit Zip Code");
+		return false;
+	}
 	return true;
 }
 window.history.forward();     
@@ -66,12 +70,12 @@ function noBack()
 		</tr>
 		<tr>
 			<td>Address Line 1</td>
-			<td><input name="addressLine1" type="text" />
+			<td><input name="addressLine1" type="text"/>
 			</td>
 		</tr>
 		<tr>
 			<td>Address Line 2</td>
-			<td><input name="addressLine2" type="text" />
+			<td><input name="addressLine2" type="text"/>
 			</td>
 		</tr>
 		<tr>

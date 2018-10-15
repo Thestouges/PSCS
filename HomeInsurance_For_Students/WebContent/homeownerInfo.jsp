@@ -26,6 +26,10 @@ function validateForm(homeowner) {
 		homeowner.dob.focus();
 		return false;
 	}
+	if(!(/^\d{4}-\d{1,2}-\d{1,2}$/.test(homeowner.dob.value))){
+		alert("Please Enter Date of Birth with format yyyy-mm-dd");
+		return false;
+	}
 	if(homeowner.isRetired[0].checked==false && homeowner.isRetired[1].checked==false )
 	{
 		alert("Please select an option for the field 'Are you Retired'");
@@ -37,10 +41,18 @@ function validateForm(homeowner) {
 		homeowner.ssn.focus();
 		return false;
 	}
+	if(!/^\d+$/.test(homeowner.ssn.value)){
+		alert("Enter a valid Social Security Number");
+		return false;
+	}
 	if(homeowner.emailAddress.value=="")
 	{
 		alert("Please enter the Email Address");
 		homeowner.emailAddress.focus();
+		return false;
+	}
+	if(!/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(homeowner.emailAddress.value)){
+		alert("Please enter a valid Email Address");
 		return false;
 	}
 	return true;
