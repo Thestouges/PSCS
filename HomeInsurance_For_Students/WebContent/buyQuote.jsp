@@ -23,7 +23,7 @@ function validateForm(form){
 		alert("Policy Eff date cannot be empty");
 		return false;
 	}
-	if(!(/^\d{4}-\d{1,2}-\d{1,2}$/.test(buyForm["policyEffDate"].value)){
+	if(!(/^\d{4}-\d{1,2}-\d{1,2}$/.test(buyForm["policyEffDate"].value){
 		alert("Please Policy Eff Date with format yyyy-mm-dd");
 		return false;
 	}
