@@ -17,14 +17,28 @@ function enableEsign()
 {
 	document.esign.esignature.disabled=false;
 }
-function validateForm(form){
+function validate(form){	
 	var buyForm = document.forms["esign"];
 	if(buyForm["policyEffDate"].value == ""){
 		alert("Policy Eff date cannot be empty");
 		return false;
 	}
-	if(!(/^\d{4}-\d{1,2}-\d{1,2}$/.test(buyForm["policyEffDate"].value){
+	
+	if(!(/^\d{4}-\d{1,2}-\d{1,2}$/.test(buyForm["policyEffDate"].value))){
 		alert("Please Policy Eff Date with format yyyy-mm-dd");
+		return false;
+	}
+	
+	var d = new Date(buyForm["policyEffDate"].value);
+	var today = new Date();
+	
+	if(d == "Invalid Date"){
+		alert(d);
+		return false;
+	}
+	
+	if(Math.round(Math.abs(d-today)/(1000*60*60*24)) > 60){
+		alert("Policy start date cannot be more than 60 days from today's date");
 		return false;
 	}
 }
@@ -44,12 +58,12 @@ function validateForm(form){
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 	    String todaysDate = sdf.format(Calendar.getInstance().getTime());
 	%>
-	Enter Policy Start Date: <input type="text" name="policyEffDate" value =" <%=todaysDate%>"/>(yyyy-MM-dd)
+	Enter Policy Start Date: <input type="text" name="policyEffDate" value ="<%=todaysDate%>"/>(yyyy-MM-dd)
 	<br/>
 	<h6>Policy start date cannot be more than 60 days from today's date</h6>
 	<br/>
 	<input type="checkbox" name="esignature" value="Esign" disabled="disabled"/>This is to acknowledge that I have read the terms and conditions of the policy.
-	<br/><input type="submit" name="submit" value="Submit" onclick="return validateForm(this);"/>
+	<br/><input type="submit" name="submit" value="Submit" onclick="return validate(esign);"/>
 	</form>
 	</div>
 	<hr/>
