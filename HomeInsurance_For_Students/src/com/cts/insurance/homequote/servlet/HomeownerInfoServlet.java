@@ -66,8 +66,6 @@ public class HomeownerInfoServlet extends HttpServlet{
 					logger.error(message);
 					throw new HomequoteSystemException(message);
 				}
-				final HomeownerBO homeownerBo = new HomeownerBO();
-//				homeownerBo.saveHomeownerInfo(homeowner);
 				session.setAttribute("homeowner", homeowner);
 				
 			}
