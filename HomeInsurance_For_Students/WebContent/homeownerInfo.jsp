@@ -63,7 +63,7 @@ function validateForm(homeowner) {
 		return false;
 	}
 	if(!/^.{0,9}$/.test(homeowner.ssn.value)){
-		alert("Address Line 1 cannot exceed 9 characters")
+		alert("SSN cannot exceed 9 characters")
 		homeowner.ssn.focus();
 		return false;
 	}

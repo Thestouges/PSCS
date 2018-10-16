@@ -54,13 +54,21 @@ function validate(form)
 		alert("Please enter State");
 		return false;
 	}
+	if(!/^.{0,15}$/.test(locationForm["state"].value)){
+		alert("State cannot exceed 15 characters")
+		return false;
+	}
+	if(!/^.[a-zA-Z0-9 ]{0,15}$/.test(locationForm["state"].value)){
+		alert("State can only contain alphanumeric characters");
+		return false;
+	}
 	if(locationForm["zip"].value == "")
 	{
 		alert("Please enter Zip");
 		return false;
 	}
-	if(!/^.{0,10}$/.test(locationForm["zip"].value)){
-		alert("Zip cannot exceed 10 characters")
+	if(!/^.{0,9}$/.test(locationForm["zip"].value)){
+		alert("Zip must be less than 10 characters")
 		return false;
 	}
 	if(!/^.[0-9]{0,10}$/.test(locationForm["zip"].value)){
