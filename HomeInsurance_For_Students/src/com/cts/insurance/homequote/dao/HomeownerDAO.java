@@ -91,11 +91,12 @@ public class HomeownerDAO {
 			if (resultSet.next()) {
 				homeowner = new Homeowner();
 				homeowner.setQuoteId(resultSet.getInt(1));
-				homeowner.setLastName(resultSet.getString(2));
-				homeowner.setDob(resultSet.getString(3));
-				homeowner.setIsRetired(resultSet.getString(4));
-				homeowner.setSsn(resultSet.getString(5));
-				homeowner.setEmailAddress(resultSet.getString(6));
+				homeowner.setFirstName(resultSet.getString(2));
+				homeowner.setLastName(resultSet.getString(3));
+				homeowner.setDob(resultSet.getString(4));
+				homeowner.setIsRetired(resultSet.getString(5));
+				homeowner.setSsn(resultSet.getString(6));
+				homeowner.setEmailAddress(resultSet.getString(7));
 			}
 			stmt.close();
 		}
