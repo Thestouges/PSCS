@@ -62,22 +62,34 @@ added NOT NULL constraints to all fields
 
 Property
 added NOT NULL constraints to all fields
+added 2 decimal places to DWELLING_STYLE field
 
+Policys
+added NOT NULL constraints to all fields
 
+Inserts
+added admin account upon generation of table
 
-3.Changes from ChangeRequirementDocuments
-From the database schema, QuoteID from Quote table is the main ID used to supply the QuoteID fields for Location, Homeowner, Property table.
-Therefore, location, homeowner, and property servlets will only store user data inside session until QuoteID is generated which is at the end of propertyServlet file in the doPost method.
-After the Quote is generated inside the table, the application will grab the newly created QuoteID from the table and store that within the application.
-The QuoteID is then distributed and overwrites all QuoteiD values inside location, homeowner and property
-Then location, homeowner, and property objects that will contain the session user values will be inserted into the database.
-Each QuoteID is generated inside the database as unique and incremented so each QuoteID will be unique to that user data and property data.
 
 4.ServiceNow
 Incident
-INC0010003
+-INC0010003
+Issue with a web page
+The customer is having trouble seeing all of the quotes they have created with their account. Instead only one quote is getting displayed regardless of the actual amount.
+
 INC0010004
+Issue with a web page
+The customer is unable to choose "Rental Property" as a viable option for the Residence Use. Changes need to be made on the html to have values matching the database.
+
 Problems # -> Change #
-PRB0040015 -> CHG0030008
-PRB0040003 -> CHG0030002
-PRB0040001 -> CHG0030001
+-PRB0040015 -> CHG0030008
+Issue with a web page -> Website form validation
+The inputs on various fields throughout the website do not check for validation. Validation o each input field should be applied throughout the website's forms
+
+-PRB0040003 -> CHG0030002
+Issue with a web page -> Location.jsp needs modification
+When entering details on the location page of the forms, Address 2 needs to be provided a value; otherwise the QuoteID will be off/values on the Quote will be messed up in the summary.
+
+-PRB0040001 -> CHG0030001
+Issue with a web page -> Database field requires change
+Program throws an error when picking 1.5/2.5 story under the Property page of the website's form. A conflict in integers and decimal values exists between the program and the database.
